@@ -18,7 +18,12 @@ int main()
 
 	al_set_new_display_flags( ALLEGRO_WINDOWED );
 	display = al_create_display( ScreenWidth, ScreenHeight );
+
+	// Get a path relative to the executable. In this case, the directory containing the executable.
 	path = al_get_standard_path( ALLEGRO_RESOURCES_PATH );
+
+	// times.ttf is the font we want to load and use. It has to be in the same directory as the executable since we set ALLEGRO_RESOURCES_PATH
+	// as parameter to al_get_standard_path().
 	al_set_path_filename(path, "times.ttf" );
 	al_set_window_position( display, 200, 100 );
 	al_set_window_title( display, "Fonts" );
@@ -36,6 +41,8 @@ int main()
 	al_draw_text( font, al_map_rgb( 44, 117, 255 ), ScreenWidth / 2, ScreenHeight / 2, ALLEGRO_ALIGN_CENTRE, "www.qualitycyberservices.com" );
 
 	al_flip_display();
+
+	// Keep the application window on screen for ten seconds.
 	al_rest( 10.0 );
 	al_destroy_font( font );
 	al_destroy_display( display );
